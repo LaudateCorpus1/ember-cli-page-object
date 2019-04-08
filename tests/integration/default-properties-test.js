@@ -76,5 +76,14 @@ if (require.has('@ember/test-helpers')) {
       assert.equal(page.dummy.isVisible(), 'isVisible');
       assert.equal(page.dummy.text(), 'text');
     });
+
+    test('allows empty create', async function(assert) {
+      let page = create();
+      page.setContext(this);
+
+      await render(createCalculatorTemplate());
+
+      assert.ok(page.isVisible, 'page rendered successfully');
+    });
   });
 }
